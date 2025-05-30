@@ -53,7 +53,10 @@ const Profile = () => {
 
         <form onSubmit={submitHandler} className="w-full space-y-4">
           <div>
-            <label className="block text-sm font-medium text-white mb-1">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-white mb-1"
+            >
               Name
             </label>
             <input
@@ -66,7 +69,10 @@ const Profile = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-white mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white mb-1"
+            >
               Email Address
             </label>
             <input
@@ -79,7 +85,10 @@ const Profile = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white mb-1"
+            >
               Password
             </label>
             <input
@@ -93,10 +102,14 @@ const Profile = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-white mb-1">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm font-medium text-white mb-1"
+            >
               Confirm Password
             </label>
             <input
+              id="confirmPassword"
               type="password"
               placeholder="Confirm Password"
               className="block w-full px-3 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-white-500"
