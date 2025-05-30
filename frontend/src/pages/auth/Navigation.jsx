@@ -69,12 +69,12 @@ const Navigation = () => {
             </button>
 
             {dropdownOpen && (
-              <ul className="absolute right-0 bottom-full mb-2 w-40 rounded bg-white text-gray-700 shadow-lg z-50">
+              <ul className="absolute right-0 bottom-full mb-2 w-25 rounded bg-white text-black shadow-lg z-50">
                 {userInfo.isAdmin && (
                   <li>
                     <Link
                       to="/admin/movies/dashboard"
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-3 py-2 hover:bg-gray-300"
                     >
                       Dashboard
                     </Link>
@@ -83,7 +83,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-6 py-2 hover:bg-gray-300"
                   >
                     Profile
                   </Link>
@@ -91,7 +91,7 @@ const Navigation = () => {
                 <li>
                   <button
                     onClick={logoutHandler}
-                    className="block px-4 py-2 cursor-pointer hover:bg-gray-100"
+                    className="block px-6 py-2 cursor-pointer hover:bg-gray-300"
                   >
                     Logout
                   </button>
