@@ -1,4 +1,6 @@
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -6,13 +8,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App.jsx";
-import "./index.css";
-import { Provider } from "react-redux";
 import store from "./app/store.js";
-import Home from "./pages/home.jsx";
-import { StrictMode } from "react";
+import "./index.css";
 import Login from "./pages/auth/Login.jsx";
+import PrivateRoute from "./pages/auth/PrivateRoute.jsx";
 import Register from "./pages/auth/Register.jsx";
+import Home from "./pages/home.jsx";
+import Profile from "./pages/user/Profile.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +22,9 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/profile" element={<Profile />} />
+      </Route>
     </Route>
   )
 );
