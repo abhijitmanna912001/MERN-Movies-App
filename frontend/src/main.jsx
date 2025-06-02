@@ -11,12 +11,13 @@ import App from "./App.jsx";
 import store from "./app/store.js";
 import "./index.css";
 import AdminRoute from "./pages/admin/AdminRoute.jsx";
+import CreateMovie from "./pages/admin/CreateMovie.jsx";
+import GenreList from "./pages/admin/GenreList.jsx";
 import Login from "./pages/auth/Login.jsx";
 import PrivateRoute from "./pages/auth/PrivateRoute.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Home from "./pages/home.jsx";
 import Profile from "./pages/user/Profile.jsx";
-import GenreList from "./pages/admin/GenreList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/movies/genre" element={<GenreList />} />
+        <Route path="/admin/movies/create" element={<CreateMovie />} />
       </Route>
     </Route>
   )
