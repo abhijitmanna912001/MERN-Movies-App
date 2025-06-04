@@ -94,9 +94,9 @@ const movieReview = async (req, res) => {
 const deleteMovie = async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedMovie = await Movie.findByIdAndDelete(id);
+    const deleteMovie = await Movie.findByIdAndDelete(id);
 
-    if (!deletedMovie) {
+    if (!deleteMovie) {
       return res.status(404).json({ message: "Movie not found" });
     }
 

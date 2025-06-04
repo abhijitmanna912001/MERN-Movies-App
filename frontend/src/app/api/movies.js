@@ -38,10 +38,12 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
     }),
 
     deleteMovie: builder.mutation({
-      query: (id) => ({ url: `${MOVIE_URL}/delete-movie/${id}` }),
-      method: "DELETE",
+      query: (id) => ({
+        url: `${MOVIE_URL}/delete-movie/${id}`,
+        method: "DELETE",
+      }),
     }),
-
+    
     getSpecificMovie: builder.query({
       query: (id) => `${MOVIE_URL}/specific-movie/${id}`,
     }),
