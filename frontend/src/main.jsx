@@ -10,6 +10,7 @@ import {
 import App from "./App.jsx";
 import store from "./app/store.js";
 import "./index.css";
+import AdminMoviesList from "./pages/admin/AdminMoviesList.jsx";
 import AdminRoute from "./pages/admin/AdminRoute.jsx";
 import CreateMovie from "./pages/admin/CreateMovie.jsx";
 import GenreList from "./pages/admin/GenreList.jsx";
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/movies/genre" element={<GenreList />} />
         <Route path="/admin/movies/create" element={<CreateMovie />} />
+        <Route path="/admin/movies-list" element={<AdminMoviesList />} />
       </Route>
     </Route>
   )

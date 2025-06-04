@@ -58,8 +58,17 @@ const CreateMovie = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only JPG, PNG, and WEBP images are allowed");
+      return;
+    }
+
     setSelectedImage(file);
   };
+  
 
   const handleCreateMovie = async () => {
     try {
@@ -179,7 +188,6 @@ const CreateMovie = () => {
           />
         </div>
 
-        {/* Genre + Buttons Row */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div className="flex-1">
             <label htmlFor="movieGenre" className="block text-sm font-medium">
@@ -204,7 +212,6 @@ const CreateMovie = () => {
             </select>
           </div>
 
-          {/* Buttons aligned to right of Genre in desktop, below in mobile */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <label className="border border-gray-400 px-4 py-2 rounded cursor-pointer text-sm">
               {!selectedImage ? "Upload Image" : "Change Image"}

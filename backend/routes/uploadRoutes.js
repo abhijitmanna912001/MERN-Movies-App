@@ -16,20 +16,32 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const filetypes = /jpe?g|png|webp/;
-  const mimetypes = /image\/jpe?g|image\/png|image\/webp/;
+  const filetypes = /jpe?g|png|webp|jfif/;
+  const allowedMimeTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/jfif",
+  ];
 
-  const extname = path.extname(file.originalname);
+  const ext = path.extname(file.originalname).slice(1).toLowerCase();
   const mimetype = file.mimetype;
 
-  if (filetypes.test(extname) && mimetypes.test(mimetype)) {
+  if (filetypes.test(ext) && allowedMimeTypes.includes(mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Images only"), false);
+    cb(new Error("Images only (.jpeg, .jpg, .png, .webp)"), false);
   }
 };
 
-const upload = multer({ storage, fileFilter });
+
+
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: { fileSize: 1 * 1024 * 1024 },
+});
+
 const uploadSingleImage = upload.single("image");
 
 router.post("/", (req, res) => {
