@@ -1,5 +1,16 @@
+import Header from "./movies/Header";
+import MoviesContainerPage from "./movies/MoviesContainerPage";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Header />
+
+      <section className="mt-[10rem] pl-10">
+        <MoviesContainerPage />
+      </section>
+    </>
+  );
 };
 
 export default Home;
