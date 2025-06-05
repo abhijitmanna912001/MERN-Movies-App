@@ -27,7 +27,7 @@ const MoviesContainerPage = () => {
   );
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto flex flex-col lg:flex-row gap-4">
+    <div className="w-full max-w-screen mx-auto flex flex-col lg:flex-row gap-4">
       <nav className="w-full lg:w-[14rem] px-4 lg:pl-0 lg:pr-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible">
         {genres?.map((g) => (
           <button
