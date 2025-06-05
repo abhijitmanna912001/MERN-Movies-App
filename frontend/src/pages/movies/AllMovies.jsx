@@ -16,7 +16,7 @@ import {
   setUniqueYears,
 } from "../../app/features/movies/moviesSlice";
 
-import banner from "../../assets/banner 3.jpg";
+import banner from "../../assets/banner.jpg";
 import MovieCard from "./MovieCard";
 
 const AllMovies = () => {
