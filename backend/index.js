@@ -17,14 +17,31 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const PORT = process.env.PORT || 3000;
-
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/genre", genreRoutes);
 app.use("/api/v1/movies", moviesRoutes);
 app.use("/api/v1/upload", uploadRoutes);
 
+
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () =>
+  console.log(
+    `Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`
+  )
+);
