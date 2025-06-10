@@ -1,27 +1,28 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   return (
     <>
-      <div className="lg:hidden p-4">
+      {/* Toggle Button for Mobile */}
+      <div className="fixed top-4 left-4 z-50 lg:hidden">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="text-white z-50"
+          className="text-white bg-[#111] p-2 rounded-full shadow-lg"
         >
-          {isSidebarOpen ? <X size={28} /> : <Menu size={28} />}
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-40 h-full w-50 bg-[#111] border-r border-[#242424] transform transition-transform duration-300 ease-in-out 
+        className={`fixed top-0 left-0 z-40 h-full w-64 bg-[#111] border-r border-[#242424] transform transition-transform duration-300 ease-in-out 
           ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } lg:translate-x-0`}
       >
-        <ul className="py-4 mt-12 lg:mt-20">
+        <ul className="py-4 mt-20">
           {[
             { to: "/admin/movies/dashboard", label: "Dashboard" },
             { to: "/admin/movies/create", label: "Create Movie" },
@@ -46,7 +47,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
 Sidebar.propTypes = {
   isSidebarOpen: PropTypes.bool.isRequired,
-  setIsSidebarOpen: PropTypes.func.isRequired
+  setIsSidebarOpen: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
