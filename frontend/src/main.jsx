@@ -14,6 +14,7 @@ import AdminMoviesList from "./pages/admin/AdminMoviesList.jsx";
 import AdminRoute from "./pages/admin/AdminRoute.jsx";
 import AllComments from "./pages/admin/AllComments.jsx";
 import CreateMovie from "./pages/admin/CreateMovie.jsx";
+import AdminDashboard from "./pages/admin/dashboard/AdminDashboard.jsx";
 import GenreList from "./pages/admin/GenreList.jsx";
 import UpdateMovie from "./pages/admin/UpdateMovie.jsx";
 import Login from "./pages/auth/Login.jsx";
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
         <Route path="/admin/movies-list" element={<AdminMoviesList />} />
         <Route path="/admin/movies/update/:id" element={<UpdateMovie />} />
         <Route path="/admin/movies/comments" element={<AllComments />} />
+        <Route path="/admin/movies/dashboard" element={<AdminDashboard />} />
       </Route>
     </Route>
   )
