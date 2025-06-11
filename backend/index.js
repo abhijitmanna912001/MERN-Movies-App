@@ -2,14 +2,17 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import path from "path";
-import connectDB from "./config/db.js";
+import fs from "fs";
 
+import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import genreRoutes from "./routes/genreRoutes.js";
 import moviesRoutes from "./routes/moviesRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-dotenv.config();
+const __dirname = path.resolve();
+dotenv.config({ path: path.join(__dirname, ".env") }); // Load root .env
+
 connectDB();
 
 const app = express();
@@ -25,15 +28,22 @@ app.use("/api/v1/genre", genreRoutes);
 app.use("/api/v1/movies", moviesRoutes);
 app.use("/api/v1/upload", uploadRoutes);
 
-// Static files and fallback
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+// Ensure uploads folder exists
+const uploadsPath = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath);
+}
 
+// Serve static uploads
+app.use("/uploads", express.static(uploadsPath));
+
+// Frontend static and fallback
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  const frontendPath = path.join(__dirname, "/frontend/dist");
+  app.use(express.static(frontendPath));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+    res.sendFile(path.resolve(frontendPath, "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
@@ -42,8 +52,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
+
+app.listen(PORT, () => {
   console.log(
     `Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`
-  )
-);
+  );
+});
