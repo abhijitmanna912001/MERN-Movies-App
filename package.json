@@ -4,10 +4,10 @@
   "description": "MERN Movies App",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "fullstack": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "nodemon backend/index.js",
     "frontend": "cd frontend && npm run dev",
-    "start": "node backend/index.js",
     "build": "cd frontend && npm install && npm run build"
   },
   "repository": {

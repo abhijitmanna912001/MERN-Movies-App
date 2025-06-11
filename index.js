@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 import path from "path";
 import fs from "fs";
 
-import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
-import genreRoutes from "./routes/genreRoutes.js";
-import moviesRoutes from "./routes/moviesRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
+import connectDB from "./backend/config/db.js";
+import userRoutes from "./backend/routes/userRoutes.js";
+import genreRoutes from "./backend/routes/genreRoutes.js";
+import moviesRoutes from "./backend/routes/moviesRoutes.js";
+import uploadRoutes from "./backend/routes/uploadRoutes.js";
 
 const __dirname = path.resolve();
 dotenv.config({ path: path.join(__dirname, ".env") }); // Load root .env
